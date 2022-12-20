@@ -1,7 +1,7 @@
 import Loginn from "../Components/Login"
 
 const Login = () => {
-  return (  
+  return (
     <div>
       <Loginn />
     </div>

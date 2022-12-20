@@ -16,25 +16,25 @@ const Signup = () => {
   const { values, errors, handleBlur, handleSubmit, touched, handleChange } = useFormik({
     initialValues: initialValues,
     validationSchema: signupSchema,
-    onSubmit: async(values,action) => {
+    onSubmit: async (values, action) => {
       console.log(values);
-      await axios.post("http://localhost:8999/users/signup",{
-        firstName:values.firstName,
+      await axios.post("http://localhost:8999/users/signup", {
+        firstName: values.firstName,
         lastName: values.lastName,
         userName: values.userName,
         email: values.email,
         password: values.password
       })
-      .then(function (response){
-        if(response.status === 200){
-          toast.success("User Registered Successfully")
-          action.resetForm()
-          router.push("/login")
-        }
-      })
-      .catch(function(error) {
-        console.log(error)  
-      })
+        .then(function (response) {
+          if (response.status === 200) {
+            toast.success("User Registered Successfully")
+            action.resetForm()
+            router.push("/login")
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
 
     }
   })

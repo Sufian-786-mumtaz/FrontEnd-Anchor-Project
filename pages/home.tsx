@@ -1,15 +1,15 @@
 import Header from "../Components/Header"
 import Menu from "../Components/Menu"
 import { client } from "../lib/client"
-const Home = ({ pizzas }:any) => {
+const Home = ({ pizzas }: any) => {
   return (
-      <div>
-        <Header />
-          <main>
-              <h1 className="text-center text-3xl py-8 font-bold text-[#2e2e2e]">Our Menu</h1>
-              <Menu pizzas={pizzas} />
-          </main>
-      </div>
+    <div>
+      <Header />
+      <main>
+        <h1 className="text-center text-3xl py-8 font-bold text-[#2e2e2e]">Our Menu</h1>
+        <Menu pizzas={pizzas} />
+      </main>
+    </div>
   )
 }
 

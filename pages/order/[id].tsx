@@ -1,7 +1,7 @@
 import { client } from "../../lib/client"
 import Header from "../../Components/Header"
-import {FaFileInvoiceDollar} from "react-icons/fa"
-import {AiOutlineDeliveredProcedure} from "react-icons/ai"
+import { FaFileInvoiceDollar } from "react-icons/fa"
+import { AiOutlineDeliveredProcedure } from "react-icons/ai"
 import Image from "next/image"
 import cooking from "../../public/assets/cooking.png"
 import Onway from "../../public/assets/onway.png"
@@ -9,12 +9,12 @@ import Spinner from "../../public/assets/spinner.svg"
 import Cookies from "js-cookie"
 import { useEffect } from "react"
 const Order = ({ order }: any) => {
-    
-    useEffect(()=>{
-        if(order.status > 3){
+
+    useEffect(() => {
+        if (order.status > 3) {
             Cookies.remove("id")
         }
-    },[order])
+    }, [order])
     return (
         <div>
             <Header />
@@ -48,7 +48,7 @@ const Order = ({ order }: any) => {
                         <span>Payment</span>
                         {order.method === 0 ? (
                             <span className="w-max bg-orange-500 p-2 rounded-3xl text-white font-semibold">On Delivery</span>
-                        ):(
+                        ) : (
                             <span className="w-max bg-green-500 p-2 rounded-3xl text-white font-semibold"   >Completed</span>
                         )}
                     </div>
@@ -72,7 +72,7 @@ const Order = ({ order }: any) => {
                                 <Image src={Spinner} alt="spinner" />
                             </div>
                         )}
-                         {order.status > 2 && (
+                        {order.status > 2 && (
                             <span className="w-max bg-green-500 p-2 rounded-3xl text-white font-semibold">Completed</span>
                         )}
                     </div>
