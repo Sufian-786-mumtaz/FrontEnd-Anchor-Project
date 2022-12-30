@@ -8,6 +8,7 @@ import { removeToCart } from "../store/cartSlice"
 import toast, { Toaster } from "react-hot-toast"
 import OrderModal from "../Components/OrderModal"
 import { useRouter } from "next/router"
+import { RootState } from "../store/store"
 const Cart = () => {
     const router = useRouter()
     const [paymentMethond, setpaymentMethond] = useState(null)
@@ -15,7 +16,7 @@ const Cart = () => {
     const dispatch = useDispatch()
 
     // Gets the cartitems data from redux using useSelector hook
-    const cartDetail = useSelector((state) => state.Cart.cartItems)
+    const cartDetail = useSelector((state:RootState) => state.Cart.cartItems)
     console.log(cartDetail)
 
     //Remove the items from the cart
