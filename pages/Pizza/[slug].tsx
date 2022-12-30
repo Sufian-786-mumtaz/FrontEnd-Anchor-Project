@@ -82,13 +82,13 @@ export async function getStaticPaths() {
         '*[_type == "pizza" && defined(slug.current)][].slug.current'
     );
     return {
-        paths: paths.map((slug) => ({ params: { slug } })),
+        paths: paths.map((slug:string) => ({ params: { slug } })),
         fallback: "blocking",
     }
 }
 
 
-export async function getStaticProps(content) {
+export async function getStaticProps(content:any) {
     const { slug = "" } = content.params;
     const pizza = await client.fetch(
         `*[_type == "pizza" && slug.current == '${slug}'][0]`

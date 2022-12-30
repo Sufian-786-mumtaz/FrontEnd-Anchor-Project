@@ -6,7 +6,7 @@ const Menu = (pizzas: any) => {
     <div>
       <div className="flex item-center justify-around flex-wrap gap-y-[2rem] px-10">
         {
-          pizzas.pizzas.map((pizza, id) => {
+          pizzas.pizzas.map((pizza:any, id:number) => {
             const src = urlFor(pizza.image).url()
             return (
               <div className=" flex item-start justify-center cursor-pointer flex-col gap-2 text-2xl font-bold text-[#2e2e2e]" key={id}>

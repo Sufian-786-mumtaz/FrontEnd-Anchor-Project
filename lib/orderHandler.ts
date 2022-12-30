@@ -1,4 +1,4 @@
-export const createOrder = async ({ Name, Phone, Address, total, paymentMethond }) => {
+export const createOrder = async ({ Name, Phone, Address, total, paymentMethond }:any) => {
     const res = await fetch("api/orders", {
         method: "POST",
         body: JSON.stringify({

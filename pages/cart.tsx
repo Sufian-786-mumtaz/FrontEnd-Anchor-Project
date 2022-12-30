@@ -10,8 +10,11 @@ import OrderModal from "../Components/OrderModal"
 import { useRouter } from "next/router"
 import { RootState } from "../store/store"
 const Cart = () => {
+    interface cartDetail {
+        quantity:number
+    }
     const router = useRouter()
-    const [paymentMethond, setpaymentMethond] = useState(null)
+    const [paymentMethond, setpaymentMethond] = useState<null | number>(null)
 
     const dispatch = useDispatch()
 
@@ -28,7 +31,7 @@ const Cart = () => {
 
     //Calcute the total amount of the items
     const sumTotal = () => {
-        const total = cartDetail.reduce((acc, curr) => {
+        const total = cartDetail.reduce((acc:any, curr:any) => {
             return acc + curr.quantity * curr.price
         }, 0)
         return total;

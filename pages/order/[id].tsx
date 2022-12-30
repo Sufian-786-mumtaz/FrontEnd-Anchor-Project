@@ -95,7 +95,9 @@ const Order = ({ order }: any) => {
 }
 
 //Fetch the data from the sanity studio whose id equals to params's id
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }:any) => {
+    console.log(params);
+    
     const query = `*[_type == 'order' && _id == '${params.id}']`
     const order = await client.fetch(query)
     return {

@@ -1,6 +1,29 @@
 import Header from "../Components/Header"
 import Menu from "../Components/Menu"
 import { client } from "../lib/client"
+
+export interface pizzaDetail {
+  detail: string;
+  image: {
+    asset:{
+      _ref:string;
+      _type:string
+    };
+    _type:string;
+  };
+  name: string;
+  price: number[];  
+  slug:{
+    current:string;
+    _type:string
+  };
+  _createdAt:string;
+  _id:string;
+  _rev: string;
+  _type:string;
+  _updatedAt:string;
+}
+
 const Home = ({ pizzas }: any) => {
   console.log(pizzas)
   return (

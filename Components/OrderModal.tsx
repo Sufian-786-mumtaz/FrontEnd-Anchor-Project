@@ -15,11 +15,12 @@ const OrderModal = ({ opened, setOpened, paymentMethond }: any) => {
   const router = useRouter()
   const [formData, setFormData] = useState({})
   const theme = useMantineTheme()
-  const handleInput = (e) => {
+  const handleInput = (e:any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
-  const total = typeof window !== "undefined" && localStorage.getItem("total")
-  const handleForm = async (e) => {
+  const total:any = typeof window !== "undefined" && localStorage.getItem("total")
+  
+  const handleForm = async (e:any) => {
     e.preventDefault()
     const id = await createOrder({ ...formData, total, paymentMethond } as const)
     dispatch(resetCart())

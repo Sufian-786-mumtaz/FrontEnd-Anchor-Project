@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import persistReducer from "redux-persist/es/persistReducer";
-const initialState = {
+const initialState:any = {
     cartItems: [], 
     users:[]
 }
@@ -8,8 +7,8 @@ const cartSlice = createSlice({
     name: "Cart",
     initialState,
     reducers:{
-        addToCart(state, action){
-            const itemIndex = state.cartItems.findIndex((item) => item._id === action.payload._id)
+        addToCart(state:any, action){
+            const itemIndex = state.cartItems.findIndex((item:any) => item._id === action.payload._id)
             if(itemIndex >= 0){
                 state.cartItems[itemIndex].quantity += action.payload.quantity 
             }else{
@@ -19,7 +18,7 @@ const cartSlice = createSlice({
         },
         removeToCart(state, action){
             const remItem = state.cartItems.filter(
-                item => item._id !== action.payload._id);
+                (item:any) => item._id !== action.payload._id);
                 state.cartItems = remItem
         },
         addUsers(state, action){

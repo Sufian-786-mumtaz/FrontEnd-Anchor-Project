@@ -49,7 +49,7 @@ const Header = () => {
                 </div>
                 <div className="flex gap-3 items-center">
                     {
-                        users && users == "" ?
+                        users && users[length].token == null ?
                             <div className="flex items-center">
                                 <Link href="/login" className="bg-red-500 px-5 text-center py-2 rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Login</Link>
                             </div> :
@@ -66,7 +66,7 @@ const Header = () => {
                             </>
                             : ""
                         }
-                        {users != "" ?
+                        {users[length].token !== null?
                             <Link href="/cart" className="flex gap-3">
                                 <div className="flex justify-center items-center relative">
                                     <FaShoppingCart className="h-8 w-8  text-red-600 cursor-pointer" />
@@ -76,7 +76,7 @@ const Header = () => {
                             : ""
                         }
 
-                        {order && users != "" && (
+                        {order && users[length].token !== null && (
                             <Link href={`/order/${order}`}>
                                 <div className="flex justify-center items-center relative">
                                     <BsReceipt size={35} color="#DC2626" />
