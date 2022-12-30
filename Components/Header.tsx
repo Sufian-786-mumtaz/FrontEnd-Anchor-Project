@@ -25,7 +25,7 @@ const Header = () => {
     }
     useEffect(() => {
         setOrder(id)
-    }, [])
+    }, [id])
     return (
         <div>
             <div className="flex justify-between items-center px-5 py-5">
@@ -52,16 +52,16 @@ const Header = () => {
                             <div className="flex items-center">
                                 <Link href="/login" className="bg-red-500 px-5 text-center py-2 rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Login</Link>
                             </div> :
-                            <div className="flex gap-1 items-center text-xl text-[#2e2e2e]">
+                            <div className="hidden gap-1 items-center text-xl text-[#2e2e2e] sm:flex">
                                 <FaUserCheck />
-                                <h1 className="font-bold ">{users[length].userName}</h1>
+                                <h1 className="font-bold">{users[length].userName}</h1>
                             </div>
 
                     }
                     <div className="flex gap-5">
                         {users != "" ?
                             <>
-                                <button onClick={() => logout()} className="bg-red-500 px-5 text-center py-2 rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Log Out</button>
+                                <button onClick={() => logout()} className="bg-red-500 px-5 text-center text-sm py-2 whitespace-nowrap rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Log Out</button>
                             </>
                             : ""
                         }

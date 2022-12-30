@@ -2,6 +2,7 @@ import Header from "../Components/Header"
 import Menu from "../Components/Menu"
 import { client } from "../lib/client"
 const Home = ({ pizzas }: any) => {
+  console.log(pizzas)
   return (
     <div>
       <Header />

@@ -42,7 +42,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <Header /> */}
       <div>
         <div className="login">
           <div className="login_wrapper px-8 py-8 bg-white flex justify-center items-center flex-col gap-8 rounded-xl">

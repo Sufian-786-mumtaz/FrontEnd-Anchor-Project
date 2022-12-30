@@ -60,8 +60,8 @@ const Cart = () => {
     return (
         <>
             <Header />
-            <div className="flex p-[2rem]">
-                <div className="w-[70%]">
+            <div className="flex flex-col items-center p-[2rem] md:flex-row md:items-start">
+                <div className="w-[100%] md:w-[70%]">
                     <table className="tabel flex flex-col justify-between w-[100%] border-separate border-spacing-4">
                         <div className="tableHeading flex font-bold justify-between  items-center">
                             <thead>Pizza</thead>
@@ -107,8 +107,8 @@ const Cart = () => {
                     </table>
                     <Toaster />
                 </div>
-                <div className="w-[30%] flex flex-col gap-5 px-5 py-5 bg-white rounded-2xl shadow-2xl">
-                    <span className="font-bold text-center text-xl">Cart Summary</span>
+                <div className="flex flex-col gap-5 px-5 py-5 bg-white rounded-2xl shadow-2xl md:w-[30%]">
+                    <span className="font-bold text-center text-xl whitespace-nowrap">Cart Summary</span>
                     <div className="mb-5">
                         <div className="cartItems flex justify-between w-full">
                             <span className="font-semibold">Items</span><span>{cartDetail.length}</span>
@@ -119,10 +119,10 @@ const Cart = () => {
                     </div>
 
                     {cartDetail.length > 0 ? (
-                        <div className="flex items-center justify-around gap-3">
-                            <button className="bg-red-500 text-white font-semibold px-3 cursor-pointer
+                        <div className="flex flex-col items-center justify-around gap-3 md:flex-row">
+                            <button className="bg-red-500 text-white whitespace-nowrap text-sm font-semibold px-3 cursor-pointer
                     rounded-3xl py-2 hover:bg-[#2e2e2e] transition" onClick={handlePayOnDelivery}>Pay on Delivery</button>
-                            <button className="bg-red-500 text-white font-semibold px-3 cursor-pointer
+                            <button className="bg-red-500 text-sm whitespace-nowrap text-white font-semibold px-3 cursor-pointer
                     rounded-3xl py-2 hover:bg-[#2e2e2e] transition" onClick={handleCheckOut}>Pay Now</button>
                         </div>
                     ) : null}
