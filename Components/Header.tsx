@@ -10,14 +10,15 @@ import { useRouter } from "next/router"
 import { parseCookies } from 'nookies'
 import { BsReceipt } from "react-icons/bs"
 import Cookies from "js-cookie"
+import { RootState } from "../store/store"
 const Header = () => {
     const { id } = parseCookies()
     const [order, setOrder] = useState("")
     const { token } = parseCookies();
     const dispatch = useDispatch()
     const router = useRouter()
-    const items = useSelector((state) => state.Cart)
-    let users = useSelector((state) => state.Cart.users)
+    const items = useSelector((state:RootState) => state.Cart)
+    let users = useSelector((state:RootState) => state.Cart.users)
     const logout = () => {
         Cookies.remove('token')
         router.push("/")
