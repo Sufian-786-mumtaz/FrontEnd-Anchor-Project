@@ -39,7 +39,7 @@ const Header = () => {
                         <Link href="/">
                             <li className="text-2xl px-4 text-[#2e2e2e] hover:text-red-600 cursor-pointer transition duration-300 font-semibold">Home</li>
                         </Link>
-                        <Link href={users != "" ? "/home" : "/login"}>
+                        <Link href="/login">
                             <li className="text-2xl px-4 text-[#2e2e2e] hover:text-red-600 cursor-pointer transition duration-300 font-semibold">Menu</li>
                         </Link>
 
@@ -49,7 +49,7 @@ const Header = () => {
                 </div>
                 <div className="flex gap-3 items-center">
                     {
-                        users && users[length].token == null ?
+                        users && users[length]?.token == null ?
                             <div className="flex items-center">
                                 <Link href="/login" className="bg-red-500 px-5 text-center py-2 rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Login</Link>
                             </div> :
@@ -60,13 +60,13 @@ const Header = () => {
 
                     }
                     <div className="flex gap-5">
-                        {users != "" ?
+                        {users[length]?.token != null ?
                             <>
                                 <button onClick={() => logout()} className="bg-red-500 px-5 text-center text-sm py-2 whitespace-nowrap rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Log Out</button>
                             </>
                             : ""
                         }
-                        {users[length].token !== null?
+                        {users[length]?.token != null?
                             <Link href="/cart" className="flex gap-3">
                                 <div className="flex justify-center items-center relative">
                                     <FaShoppingCart className="h-8 w-8  text-red-600 cursor-pointer" />
@@ -76,7 +76,7 @@ const Header = () => {
                             : ""
                         }
 
-                        {order && users[length].token !== null && (
+                        {order && users[length]?.token != null && (
                             <Link href={`/order/${order}`}>
                                 <div className="flex justify-center items-center relative">
                                     <BsReceipt size={35} color="#DC2626" />
