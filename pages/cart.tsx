@@ -20,11 +20,9 @@ const Cart = () => {
 
     // Gets the cartitems data from redux using useSelector hook
     const cartDetail = useSelector((state:RootState) => state.Cart.cartItems)
-    console.log(cartDetail)
 
     //Remove the items from the cart
     const handleRemove = (pizza: any) => {
-        console.log(pizza)
         dispatch(removeToCart(pizza))
         toast.error(`${pizza.name} is removed from cart`)
     }

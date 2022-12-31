@@ -1,7 +1,5 @@
 import {  NextRequest, NextResponse } from "next/server";
-export function middleware(req:NextRequest){
-    console.log(req);
-    
+export function middleware(req:NextRequest){    
     const token = req.cookies.get("token")
     
     if(req.url.includes("http://localhost:3000/home") && !token){

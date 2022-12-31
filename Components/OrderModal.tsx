@@ -10,7 +10,6 @@ import { parseCookies } from "nookies";
 const OrderModal = ({ opened, setOpened, paymentMethond }: any) => {
   const { id } = parseCookies()
   const [order, setOrder] = useState(id)
-  console.log(order)
   const dispatch = useDispatch()
   const router = useRouter()
   const [formData, setFormData] = useState({})

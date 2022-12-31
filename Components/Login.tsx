@@ -18,7 +18,6 @@ const Login = () => {
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      console.log(values)
       await axios.post("http://localhost:8999/users/login", {
         userName: values.userName,
         password: values.password
@@ -33,7 +32,6 @@ const Login = () => {
           }
         })
         .catch(function (error) {
-          console.log(error)
           toast.error("Incorrect Username or Password")
         })
     }

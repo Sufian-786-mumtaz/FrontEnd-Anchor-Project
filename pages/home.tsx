@@ -25,7 +25,6 @@ export interface pizzaDetail {
 }
 
 const Home = ({ pizzas }: any) => {
-  console.log(pizzas)
   return (
     <div>
       <Header />
