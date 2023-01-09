@@ -3,6 +3,8 @@ import toast, { Toaster } from "react-hot-toast"
 import { useRouter } from "next/router"
 import { useFormik } from "formik"
 import { signupSchema } from "../Yup Schemas"
+import { useState } from "react"
+import useAuth from "../hooks/useAuth"
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -13,29 +15,18 @@ const initialValues = {
 }
 const Signup = () => {
   const router = useRouter()
+  const [signup, setSignUp] = useState(false)
+  const {signUp} = useAuth()
   const { values, errors, handleBlur, handleSubmit, touched, handleChange } = useFormik({
     initialValues: initialValues,
     validationSchema: signupSchema,
     onSubmit: async (values, action) => {
-      console.log(values);
-      await axios.post("http://localhost:8999/users/signup", {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        userName: values.userName,
-        email: values.email,
-        password: values.password
-      })
-        .then(function (response) {
-          if (response.status === 200) {
-            toast.success("User Registered Successfully")
-            action.resetForm()
-            router.push("/login")
-          }
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-
+      if(signup){
+        signUp(values.email, values.password)
+        action.resetForm()
+      }else{
+        setSignUp(false)
+      }
     }
   })
 
@@ -81,7 +72,7 @@ const Signup = () => {
 
             <div className="text-center">
               <button className="bg-red-500 px-8 py-2 font-bold text-white my-2 rounded-3xl hover:bg-[#2e2e2e]
-             hover:text-white transition" type="submit" >Sign Up</button>
+             hover:text-white transition" type="submit" onClick={()=>setSignUp(true)} >Sign Up</button>
             </div>
 
           </form>

@@ -11,18 +11,21 @@ import { parseCookies } from 'nookies'
 import { BsReceipt } from "react-icons/bs"
 import Cookies from "js-cookie"
 import { RootState } from "../store/store"
+import useAuth from "../hooks/useAuth"
 const Header = () => {
     const { id } = parseCookies()
     const [order, setOrder] = useState("")
-    const { token } = parseCookies();
     const dispatch = useDispatch()
     const router = useRouter()
     const items = useSelector((state:RootState) => state.Cart)
     let users = useSelector((state:RootState) => state.Cart.users)
-    const logout = () => {
-        Cookies.remove('token')
-        router.push("/")
+    const {logout} = useAuth()
+    console.log(users)
+    const handlelogout = () => {
         dispatch(logOut())
+        logout()
+        router.push("/login")
+
     }
     useEffect(() => {
         setOrder(id)
@@ -49,24 +52,19 @@ const Header = () => {
                 </div>
                 <div className="flex gap-3 items-center">
                     {
-                        users && users[length]?.token == null ?
+                        users && users[length] == null ?
                             <div className="flex items-center">
                                 <Link href="/login" className="bg-red-500 px-5 text-center py-2 rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Login</Link>
-                            </div> :
-                            <div className="hidden gap-1 items-center text-xl text-[#2e2e2e] sm:flex">
-                                <FaUserCheck />
-                                <h1 className="font-bold">{users[length].userName}</h1>
-                            </div>
-
+                            </div> : null
                     }
                     <div className="flex gap-5">
-                        {users[length]?.token != null ?
+                        {users[length] != null ?
                             <>
-                                <button onClick={() => logout()} className="bg-red-500 px-5 text-center text-sm py-2 whitespace-nowrap rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Log Out</button>
+                                <button onClick={() => handlelogout()} className="bg-red-500 px-5 text-center text-sm py-2 whitespace-nowrap rounded-full text-white font-bold hover:bg-[#2e2e2e] transition">Log Out</button>
                             </>
                             : ""
                         }
-                        {users[length]?.token != null?
+                        {users[length] != null?
                             <Link href="/cart" className="flex gap-3">
                                 <div className="flex justify-center items-center relative">
                                     <FaShoppingCart className="h-8 w-8  text-red-600 cursor-pointer" />
@@ -76,7 +74,7 @@ const Header = () => {
                             : ""
                         }
 
-                        {order && users[length]?.token != null && (
+                        {order && users[length] != null && (
                             <Link href={`/order/${order}`}>
                                 <div className="flex justify-center items-center relative">
                                     <BsReceipt size={35} color="#DC2626" />

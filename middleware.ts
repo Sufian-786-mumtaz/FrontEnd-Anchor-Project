@@ -1,6 +1,6 @@
 import {  NextRequest, NextResponse } from "next/server";
 export function middleware(req:NextRequest){    
-    const token = req.cookies.get("token")
+    const token = req.cookies.get("session")
     
     if(req.url.includes("http://localhost:3000/home") && !token){
         return NextResponse.redirect("http://localhost:3000/login")
