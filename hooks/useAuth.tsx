@@ -27,7 +27,7 @@ const AuthContext = createContext<IAuth>({
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [loading, setLoading] = useState(false)
     const [initialLoading, setInitialLoading] = useState(true)
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<User | null>(null)
     const [error, setError] = useState(null)
     const router = useRouter()
     
